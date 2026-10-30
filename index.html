@@ -4,69 +4,123 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="أدوات عربية مجانية للكتابة وصناعة المحتوى وتنظيم النصوص">
 <title>أدوات العرب الذكية</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#0f172a;color:white}
-header{text-align:center;padding:30px 15px;background:#172554}
-header h1{color:#38bdf8}
-main{max-width:800px;margin:25px auto;padding:15px}
-.card{background:#1e293b;padding:22px;border-radius:15px;margin-bottom:20px}
-h2{color:#38bdf8}
-textarea,input,select{width:100%;padding:14px;border-radius:9px;border:1px solid #475569;background:#0f172a;color:white;font-size:16px;margin:10px 0}
-button{background:#0284c7;color:white;border:0;padding:13px 20px;border-radius:9px;font-size:16px;cursor:pointer;margin:5px}
-.result{background:#334155;padding:15px;border-radius:9px;min-height:45px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8}
-footer{text-align:center;padding:25px;color:#94a3b8}
+body{margin:0;background:#0f172a;color:#fff;font-family:Arial,sans-serif;line-height:1.8}
+header{background:#172554;padding:25px 15px;text-align:center}
+header h1{color:#38bdf8;font-size:28px;margin:5px}
+header p{color:#cbd5e1}
+nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:12px;background:#1e293b}
+nav a{color:white;text-decoration:none;padding:7px 12px}
+main{max-width:850px;margin:25px auto;padding:12px}
+.card{background:#1e293b;padding:22px;border-radius:16px;margin-bottom:20px;border:1px solid #334155}
+h2{color:#38bdf8;margin-top:0}
+input,textarea,select{width:100%;padding:14px;margin:9px 0;background:#0f172a;color:white;border:1px solid #475569;border-radius:9px;font-size:16px}
+textarea{min-height:110px;resize:vertical}
+button{background:#0284c7;color:white;border:0;padding:11px 18px;border-radius:9px;font-size:15px;cursor:pointer;margin:5px}
+button:hover{background:#0369a1}
+.result{background:#334155;padding:15px;border-radius:10px;margin-top:12px;white-space:pre-wrap;overflow-wrap:anywhere}
+.post{background:#0f172a;border:1px solid #475569;padding:13px;border-radius:10px;margin:12px 0}
+.post p{white-space:pre-wrap;overflow-wrap:anywhere}
+.small{color:#94a3b8;font-size:13px}
+footer{text-align:center;background:#172554;padding:25px;color:#cbd5e1}
+footer a{color:#38bdf8}
 </style>
 </head>
 <body>
+
 <header>
 <h1>🤖 أدوات العرب الذكية</h1>
 <p>أدوات مجانية تساعدك في حياتك اليومية</p>
 </header>
+
+<nav>
+<a href="#tools">الأدوات</a>
+<a href="#posts">المنشورات</a>
+<a href="#ideas">الأفكار</a>
+<a href="#about">من نحن</a>
+<a href="#privacy">الخصوصية</a>
+</nav>
+
 <main>
 
-<div class="card">
+<section id="tools" class="card">
 <h2>📝 عداد الكلمات</h2>
 <textarea id="words" placeholder="اكتب النص هنا..."></textarea>
 <button onclick="countWords()">احسب الكلمات</button>
 <div class="result" id="count">عدد الكلمات سيظهر هنا</div>
-</div>
+</section>
 
-<div class="card">
+<section class="card">
 <h2>✨ منسق النصوص</h2>
 <textarea id="formatText" placeholder="ضع النص الذي تريد تنسيقه..."></textarea>
 <button onclick="formatText()">تنسيق النص</button>
+<button onclick="copyText('formatted')">نسخ النص</button>
 <div class="result" id="formatted">النتيجة ستظهر هنا</div>
-</div>
+</section>
 
-<div class="card">
-<h2>💡 مولد الأفكار</h2>
-<button onclick="idea()">اقترح فكرة</button>
-<div class="result" id="ideaResult">فكرتك ستظهر هنا</div>
-</div>
-
-<div class="card">
-<h2>📱 مولد منشورات فيسبوك وتيك توك</h2>
-<input id="topic" placeholder="اكتب موضوع المنشور...">
+<section id="posts" class="card">
+<h2>📱 مولد المنشورات</h2>
+<p>أنشئ خمسة منشورات مختلفة لموضوعك.</p>
+<input id="topic" placeholder="مثلاً: الصداقة، النجاح، الحياة...">
 <select id="platform">
-<option value="فيسبوك">فيسبوك</option>
-<option value="تيك توك">تيك توك</option>
+<option>فيسبوك</option>
+<option>تيك توك</option>
 </select>
-<select id="tone">
-<option value="عفوي">أسلوب عفوي</option>
-<option value="قوي">أسلوب قوي</option>
-<option value="مضحك">أسلوب مضحك</option>
-<option value="تحفيزي">أسلوب تحفيزي</option>
+<select id="style">
+<option value="social">اجتماعي</option>
+<option value="funny">مضحك</option>
+<option value="sad">حزين</option>
+<option value="strong">قوي</option>
+<option value="motivation">تحفيزي</option>
 </select>
-<button onclick="makePost()">إنشاء المنشور</button>
-<div class="result" id="postResult">منشورك سيظهر هنا</div>
-<button onclick="copyPost()">📋 نسخ المنشور</button>
-</div>
+<button onclick="makePosts()">إنشاء 5 منشورات</button>
+<div id="postsResult"></div>
+</section>
+
+<section id="ideas" class="card">
+<h2>💡 مولد أفكار المحتوى</h2>
+<select id="category">
+<option>محتوى اجتماعي</option>
+<option>محتوى مضحك</option>
+<option>معلومات عامة</option>
+<option>محتوى تحفيزي</option>
+<option>محتوى تقني</option>
+</select>
+<button onclick="makeIdeas()">اقترح أفكاراً</button>
+<div class="result" id="ideasResult">أفكارك ستظهر هنا</div>
+</section>
+
+<section class="card">
+<h2>🎯 مولد العناوين الجذابة</h2>
+<input id="titleTopic" placeholder="اكتب موضوع العنوان">
+<button onclick="makeTitles()">إنشاء عناوين</button>
+<div class="result" id="titlesResult">العناوين ستظهر هنا</div>
+</section>
+
+<section id="about" class="card">
+<h2>ℹ️ من نحن</h2>
+<p>أدوات العرب الذكية مشروع عربي يقدم أدوات مجانية تساعد المستخدمين في الكتابة وصناعة المحتوى وتنظيم النصوص.</p>
+<p>هدفنا توفير أدوات سهلة وبسيطة للجميع.</p>
+</section>
+
+<section id="privacy" class="card">
+<h2>🔒 سياسة الخصوصية</h2>
+<p>الأدوات الموجودة في هذا الموقع تعمل داخل متصفح المستخدم.</p>
+<p>لا يطلب الموقع إنشاء حساب أو إدخال كلمة مرور.</p>
+<p>لا ترسل النصوص المكتوبة في الأدوات إلى خادم الموقع بواسطة هذه النسخة.</p>
+</section>
 
 </main>
-<footer>© 2026 أدوات العرب الذكية</footer>
+
+<footer>
+<p>© 2026 أدوات العرب الذكية</p>
+<p>جميع الحقوق محفوظة</p>
+<a href="#tools">العودة إلى الأعلى ↑</a>
+</footer>
 
 <script>
 function countWords(){
@@ -81,64 +135,116 @@ document.getElementById('formatted').textContent=
 t.replace(/\s+/g,' ');
 }
 
-function idea(){
-let ideas=[
-'اكتب قصة عن النجاح',
-'قدم نصائح لتوفير الوقت',
-'شارك معلومة تقنية مفيدة',
-'اصنع محتوى عن الذكاء الاصطناعي',
-'اكتب قصة قصيرة مشوقة',
-'شارك موقفاً مضحكاً من الحياة اليومية'
-];
-let i=Math.floor(Math.random()*ideas.length);
-document.getElementById('ideaResult').textContent=ideas[i];
+function copyText(id){
+let t=document.getElementById(id).textContent;
+copy(t);
 }
 
-function makePost(){
-let topic=document.getElementById('topic').value.trim();
-let platform=document.getElementById('platform').value;
-let tone=document.getElementById('tone').value;
-
-if(!topic){
-document.getElementById('postResult').textContent=
-'اكتب موضوع المنشور أولاً.';
-return;
-}
-
-let intros={
-'عفوي':'خلونا نحكوا اليوم عن ',
-'قوي':'هناك موضوع يستحق أن نتوقف عنده: ',
-'مضحك':'يبدو أن موضوع اليوم يستحق الضحك والتفكير 😂: ',
-'تحفيزي':'كل بداية جميلة تبدأ بفكرة، واليوم نتحدث عن '
-};
-
-let endings={
-'عفوي':'شن رأيكم في الموضوع؟ شاركونا آراءكم ❤️',
-'قوي':'ما رأيكم؟ النقاش مفتوح.',
-'مضحك':'قولولنا رأيكم، بدون مجاملة 😂',
-'تحفيزي':'ابدأ بخطوة صغيرة، فالنجاح يحتاج إلى استمرار 💪'
-};
-
-let hashtags='#محتوى #العرب #أفكار #'+
-topic.replace(/\s+/g,'');
-
-let result=intros[tone]+topic+'\n\n'+
-endings[tone]+'\n\n'+hashtags;
-
-document.getElementById('postResult').textContent=
-'منشور '+platform+':\n\n'+result;
-}
-
-function copyPost(){
-let t=document.getElementById('postResult').textContent;
-if(!t||t==='منشورك سيظهر هنا')return;
+function copy(t){
 if(navigator.clipboard){
-navigator.clipboard.writeText(t).then(()=>{
-alert('تم نسخ المنشور');
-}).catch(()=>alert('تعذر النسخ، انسخ النص يدوياً'));
+navigator.clipboard.writeText(t).then(
+()=>alert('تم النسخ بنجاح')
+).catch(()=>alert('تعذر النسخ، انسخ النص يدوياً'));
 }else{
 alert('انسخ النص يدوياً');
 }
+}
+
+function makePosts(){
+let topic=document.getElementById('topic').value.trim();
+let platform=document.getElementById('platform').value;
+let style=document.getElementById('style').value;
+let box=document.getElementById('postsResult');
+
+if(!topic){
+box.textContent='اكتب الموضوع أولاً';
+return;
+}
+
+let templates={
+social:[
+'خلونا نحكوا اليوم عن '+topic+'. شن رأيكم؟ شاركونا آراءكم ❤️',
+' '+topic+' من المواضيع اللي تستحق النقاش. احكولنا تجاربكم.',
+'كل واحد عنده وجهة نظر مختلفة في '+topic+'. نبو نسمعوا رأيكم.',
+'موضوع اليوم هو '+topic+'. شن أول حاجة تخطر في بالكم؟',
+'الحياة تعلمنا الكثير عن '+topic+'. شاركونا بكلمة من تجاربكم.'
+],
+funny:[
+' '+topic+' موضوع وحده يبي قعدة وضحك 😂',
+'لما يبدأ الكلام عن '+topic+' اعرف إن الضحك بيبدأ!',
+' '+topic+' عنده حكايات أكثر من المسلسلات 😂',
+'قول الحقيقة، أول ما تسمع '+topic+' شن يخطر في بالك؟',
+' '+topic+' يحتاج لجنة تحقيق مش نقاش 😂'
+],
+sad:[
+'أحياناً '+topic+' يخلينا نفكروا في أشياء كثيرة.',
+'مش كل ما نحكوا عن '+topic+' نقدروا نعبروا عن اللي داخلنا.',
+'بعض التجارب مع '+topic+' تترك فينا ذكريات طويلة.',
+'في حاجات تتغير مع الوقت، حتى نظرتنا إلى '+topic+'.',
+'أحياناً الصمت يحكي أكثر من الكلام عن '+topic+'.'
+],
+strong:[
+'خلونا نكونوا واضحين: '+topic+' موضوع يستحق الكلام.',
+'مش كل الناس تشوف '+topic+' بنفس الطريقة.',
+'الرأي الواضح أفضل من الكلام اللي ما عنده معنى عن '+topic+'.',
+' '+topic+' يحتاج نقاشاً صريحاً بدون مجاملة.',
+'قول رأيك في '+topic+' بكل وضوح.'
+],
+motivation:[
+'ابدأ اليوم بخطوة جديدة في طريق '+topic+' 💪',
+'لا تستسلم، فكل تجربة في '+topic+' تعلمك شيئاً جديداً.',
+'التغيير يبدأ بفكرة، وموضوعنا اليوم هو '+topic+'.',
+'ثق في قدرتك على التعلم والتطور في '+topic+'.',
+'كل يوم فرصة جديدة لتكون أفضل في '+topic+' ✨'
+]
+};
+
+let hashtags='#محتوى #العرب #أفكار';
+box.innerHTML='';
+templates[style].forEach((p,i)=>{
+let full=p+'\n\n'+hashtags;
+let div=document.createElement('div');
+div.className='post';
+let label=document.createElement('b');
+label.textContent='منشور '+(i+1)+' - '+platform;
+let para=document.createElement('p');
+para.textContent=full;
+let btn=document.createElement('button');
+btn.textContent='نسخ المنشور';
+btn.onclick=()=>copy(full);
+div.append(label,para,btn);
+box.appendChild(div);
+});
+}
+
+function makeIdeas(){
+let category=document.getElementById('category').value;
+let data={
+'محتوى اجتماعي':['هل الصداقة تدوم مع المسافات؟','ما أهم صفة في الإنسان؟','هل المواقف تكشف حقيقة الناس؟','ما أجمل ذكرى عندك؟','هل الاعتذار يقلل من قيمة الإنسان؟'],
+'محتوى مضحك':['أغرب موقف صار لك','مواقف مضحكة في السفر','أعذار التأخير المشهورة','أشياء نعملوها كل يوم وننكروا ذلك','مواقف محرجة لا تنسى'],
+'معلومات عامة':['حقائق عن الفضاء','معلومات عن البحار','اختراعات غيرت العالم','حقائق عن جسم الإنسان','ألغاز تحتاج تفكيراً'],
+'محتوى تحفيزي':['كيف تبدأ من الصفر؟','أهمية الاستمرار','كيف تتعلم مهارة جديدة؟','قيمة الوقت','كيف تتجاوز الفشل؟'],
+'محتوى تقني':['نصائح لحماية الهاتف','تطبيقات مفيدة','مستقبل الذكاء الاصطناعي','طرق تنظيم الملفات','مميزات الهاتف الذكي']
+};
+document.getElementById('ideasResult').textContent=
+data[category].map((x,i)=>(i+1)+'. '+x).join('\n');
+}
+
+function makeTitles(){
+let t=document.getElementById('titleTopic').value.trim();
+if(!t){
+document.getElementById('titlesResult').textContent='اكتب الموضوع أولاً';
+return;
+}
+let arr=[
+'كل ما تحتاج معرفته عن '+t,
+'الحقيقة التي لا تعرفها عن '+t,
+'5 أشياء مهمة عن '+t,
+'لماذا يتحدث الجميع عن '+t+'؟',
+'موضوع يستحق النقاش: '+t
+];
+document.getElementById('titlesResult').textContent=
+arr.map((x,i)=>(i+1)+'. '+x).join('\n');
 }
 </script>
 </body>
